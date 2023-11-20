@@ -3,6 +3,13 @@ import { defineConfig } from "tinacms";
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
+// Enable branching
+cmsCallback: cms => {
+    cms.flags.set("branch-switcher", true);
+    return cms;
+  }
+
+// Config
 export default defineConfig({
   branch: 
     process.env.TINA_BRANCH! || // custom branch env override
